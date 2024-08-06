@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+body {
+  @apply bg-gray-900 text-gray-100;
+}
+
+h1, h2, h3 {
+  @apply text-white;
+}
+
+p {
+  @apply mb-4 text-gray-300;
+}
+
+a {
+  @apply text-blue-400 hover:text-blue-600;
+}
+
+img {
+  @apply w-full h-auto rounded-lg;
+}
+
+/* Recipe Section Styles */
+.recipeSection {
+  @apply py-8 px-4;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 text-transparent bg-clip-text;
+  @apply text-6xl font-extrabold; /* Increase font size and weight */
+}
+
+.recipeContainer {
+  @apply flex flex-wrap gap-6;
+}
+
+.recipes {
+  @apply bg-gray-800 p-4 rounded-lg shadow-md w-full sm:w-1/2 md:w-1/3 lg:w-1/4;
+}
+
+.recipeCard {
+  @apply flex flex-col items-center;
+}
+
+.recipeCard h3 {
+  @apply text-xl font-bold mb-2;
+}
+
+.recipeCard a {
+  @apply mt-2 text-blue-400 underline;
+}
+
+.recipeCard p {
+  @apply mt-2 text-gray-400;
+}
+
+.recipeCard img {
+  @apply mb-4 rounded-lg;
+}
+
+/* Modal Styles */
+.MuiModal-root {
+  @apply z-50;
+}
+
+.MuiBox-root {
+  @apply border border-gray-700;
+}
+
+.MuiBox-root.MuiModal-root {
+  @apply p-4 bg-gray-800 shadow-lg rounded-lg;
+}
+
+/* globals.css */
+.chartContainer {
+  max-width: 80%; /* Set a max-width to control the size */
+  margin: auto;
+  padding: 1rem;
+}
+
+.chartContainer canvas {
+  width: 100% !important; /* Ensure the canvas uses full container width */
+  height: 400px !important; /* Set a fixed height for medium size */
+}
+
