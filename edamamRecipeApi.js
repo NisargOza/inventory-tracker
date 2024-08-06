@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const APP_ID = "c5825417";
-const APP_KEY = "39b25af700e8e681f169e65c90ac462c";
+const APP_ID = process.env.NEXT_PUBLIC_EDAMAM_APP_ID;
+const APP_KEY = process.env.NEXT_PUBLIC_EDAMAM_APP_KEY;
 const BASE_URL = "https://api.edamam.com/search";
 const CACHE_KEY = "recipeCache";
 const LAST_CALL_TIME_KEY = "lastRecipeCallTime";
@@ -36,7 +36,7 @@ export const getRecipesByIngredients = async (ingredients) => {
         app_id: APP_ID,
         app_key: APP_KEY,
         from: 0,
-        to: 5,
+        to: 3,
       },
     });
 
