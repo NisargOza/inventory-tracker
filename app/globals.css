@@ -25,7 +25,7 @@ img {
 
 /* Recipe Section Styles */
 .recipeSection {
-  @apply py-8 px-4;
+  @apply py-8 px-4 flex flex-col items-center justify-center w-full ml-auto mr-auto;
 }
 
 .gradient-text {
@@ -34,15 +34,15 @@ img {
 }
 
 .recipeContainer {
-  @apply flex flex-wrap gap-6;
+  @apply flex flex-row flex-wrap gap-6 w-full justify-center items-center;
 }
 
 .recipes {
-  @apply bg-gray-800 p-4 rounded-lg shadow-md w-full sm:w-1/2 md:w-1/3 lg:w-1/4;
+  @apply bg-gray-800 p-4 rounded-lg shadow-md w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex gap-4 ;
 }
 
 .recipeCard {
-  @apply flex flex-col items-center;
+  @apply flex flex-col items-center justify-center;
 }
 
 .recipeCard h3 {
@@ -85,4 +85,3 @@ img {
   width: 100% !important; /* Ensure the canvas uses full container width */
   height: 400px !important; /* Set a fixed height for medium size */
 }
-

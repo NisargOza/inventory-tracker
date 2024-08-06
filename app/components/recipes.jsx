@@ -9,13 +9,13 @@ export default function Recipes({ inventory }) {
   const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
-  // Function to fetch recipes based on inventory items
   const fetchRecipes = async () => {
     setIsLoading(true);
     const ingredients = inventory.map((item) => item.name);
     try {
       const recipeData = await getRecipesByIngredients(ingredients);
       setRecipes(recipeData);
+      console.log('Recipes fetched:', recipeData); // Add this line
     } catch (error) {
       console.error('Error fetching recipes:', error);
     } finally {
@@ -23,27 +23,20 @@ export default function Recipes({ inventory }) {
     }
   };
 
-  // Handle opening the modal with a specific recipe
   const handleOpen = (recipe) => {
     setSelectedRecipe(recipe);
     setOpen(true);
   };
 
-  // Handle closing the modal
   const handleClose = () => {
     setOpen(false);
     setSelectedRecipe(null);
   };
 
-  // Function to handle the "Get Recipe" button click
   const handleGetRecipe = async () => {
     await fetchRecipes();
-    if (recipes.length > 0) {
-      handleOpen(recipes[0]); // Automatically open the first recipe in the list
-    } else {
-      handleOpen(null); // Open an empty modal with a message if no recipes are found
-    }
   };
+
 
   return (
     <section className="recipeSection">
@@ -53,40 +46,46 @@ export default function Recipes({ inventory }) {
           variant="contained"
           onClick={handleGetRecipe}
           sx={{
-            backgroundColor: '#00B4D8', // Button color
+            backgroundColor: '#00B4D8',
             color: '#fff',
-            border: 'none', // Remove any border
+            border: 'none',
             '&:hover': {
-              backgroundColor: '#00B4D8' // Same color on hover
+              backgroundColor: '#00B4D8'
             }
           }}
         >
-          Get Recipe
+          Get Recipes
         </Button>
       </Box>
       <div className="recipeContainer">
-        {selectedRecipe && (
+        {isLoading ? (
+          <p>Loading recipes...</p>
+        ) : recipes.length > 0 ? (
           <div className="recipes">
-            <div className="recipeCard">
-              <h3>{selectedRecipe.title}</h3>
-              <img src={selectedRecipe.image} alt={selectedRecipe.title} />
-              <Button
-                variant="contained"
-                onClick={() => handleOpen(selectedRecipe)}
-                sx={{
-                  mt: 2,
-                  backgroundColor: '#00B4D8', // Same color
-                  color: '#fff',
-                  border: 'none', // Remove any border
-                  '&:hover': {
-                    backgroundColor: '#00B4D8' // Same color on hover
-                  }
-                }}
-              >
-                View Details
-              </Button>
-            </div>
+            {recipes.map((recipe) => (
+              <div key={recipe.id} className="recipeCard">
+                <h3>{recipe.title}</h3>
+                <img src={recipe.image} alt={recipe.title} />
+                <Button
+                  variant="contained"
+                  onClick={() => handleOpen(recipe)}
+                  sx={{
+                    mt: 2,
+                    backgroundColor: '#00B4D8',
+                    color: '#fff',
+                    border: 'none',
+                    '&:hover': {
+                      backgroundColor: '#00B4D8'
+                    }
+                  }}
+                >
+                  View Details
+                </Button>
+              </div>
+            ))}
           </div>
+        ) : (
+          <p>No recipes found. Try clicking &quot;Get Recipes&quot; or adding more ingredients to your inventory.</p>
         )}
       </div>
 
