@@ -85,7 +85,7 @@ export default function Recipes({ inventory }) {
             ))}
           </div>
         ) : (
-          <p>No recipes found. Try clicking &quot;Get Recipes&quot; or adding more ingredients to your inventory.</p>
+          <p>Try clicking &quot;Get Recipes&quot; or adding more ingredients to your inventory.</p>
         )}
       </div>
 
