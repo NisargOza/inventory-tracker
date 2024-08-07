@@ -40,7 +40,7 @@ export default function Recipes({ inventory }) {
 
   return (
     <section className="recipeSection">
-      <h1 className="gradient-text">Pantry Tracker</h1>
+      <h1 className="gradient-text">PantryPal</h1>
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 2 }}>
         <Button
           variant="contained"
